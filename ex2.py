@@ -38,6 +38,6 @@ print(f"alunos reprovados{reprovados}")
 print(f"alunos com 16 ou mais{num_alunos_16}")
 print(f"maior nota{maior}")
 print(f"menor nota{menor}")
-print(f"media turma{media}")
-print(f"percentagem turma{percentagem_aprovados}")
+print(f"media turma: {round(media,2)}")
+print(f"percentagem turma{round(percentagem_aprovados,2)}")
 
