@@ -62,7 +62,14 @@ for nota in aluno["notas"].values():
     notas_aluno.append(nota)
     media = round(sum(notas_aluno)/len(notas_aluno),2)
      
-print (f"")
+print (f"{media}")
+
+escola_porto = {}
+for chave,valor in escola.items():
+    if valor ["cidade"] == "Porto":
+        escola_porto[chave] = valor
+        
+escola_porto2 ={chave :valor for chave, valor in escola.items() if valor ["cidade"] == "Porto"}
 
 # media_nota_aluno = 0.0
 # soma_nota = 0
