@@ -1,10 +1,8 @@
 import random
 
-# ---------- FUNÇÕES ----------
 def inimigos_vivos(inimigos):
-    # list comprehension: só os inimigos com vida > 0
+   
     return [inimigo for inimigo in inimigos if inimigo["vida"] > 0]
-
 
 def mostrar_menu():
     print()
@@ -17,7 +15,7 @@ def mostrar_menu():
 
 
 def atacar(jogador, inimigos):
-    # devolve 1 se derrotou o inimigo, 0 caso contrário
+# devolve 1 se derrotou o inimig 0 caso contrário
     vivos = inimigos_vivos(inimigos)
     if len(vivos) == 0:
         print("Não existem inimigos vivos.")
@@ -27,7 +25,7 @@ def atacar(jogador, inimigos):
     for i in range(len(vivos)):
         print(f"{i + 1} - {vivos[i]['nome']} | Vida: {vivos[i]['vida']} | Ataque: {vivos[i]['ataque']}")
 
-    # números aceites: "1", "2", ... até ao nº de inimigos vivos
+# números aceites: "1", "2" até ao nº de inimigos vivos
     validos = [str(n) for n in range(1, len(vivos) + 1)]
     escolha = input("Escolha o inimigo: ")
 
@@ -37,7 +35,7 @@ def atacar(jogador, inimigos):
 
     alvo = vivos[int(escolha) - 1]
 
-    # ataque do jogador
+    # ataque jogador
     dano = random.randint(10, 20)
     alvo["vida"] -= dano
     if alvo["vida"] < 0:
@@ -89,7 +87,7 @@ def usar_pocao(jogador):
         print(f"Usaste uma poção. Vida: {jogador['vida']} | Poções restantes: {jogador['pocoes']}")
 
 
-# ---------- PROGRAMA PRINCIPAL ----------
+# PROGRAMA PRINCIPAL 
 print("==============================")
 print("        JOGO DE BATALHA")
 print("==============================")
@@ -106,7 +104,6 @@ tipos = [
     {"nome": "Dragão", "vida": 100, "ataque": 20, "pontos": 500},
 ]
 
-# Escolher entre 3 e 5 inimigos (copy() para cada um ter a sua própria vida)
 inimigos = []
 for i in range(random.randint(3, 5)):
     inimigos.append(random.choice(tipos).copy())
@@ -133,14 +130,14 @@ while resultado == "":
     else:
         print("Opção inválida! Escolha de 1 a 5.")
 
-    # Condições de fim de jogo (só se ainda não fugiu)
+# Condições de fim de jogo só se ainda não fugiu
     if resultado == "":
         if jogador["vida"] <= 0:
             resultado = "DERROTA"
         elif len(inimigos_vivos(inimigos)) == 0:
             resultado = "VITÓRIA"
 
-# ---------- MENSAGEM FINAL ----------
+# MENSAGEM NO FINAL
 print()
 print("==============================")
 if resultado == "VITÓRIA":
