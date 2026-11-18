@@ -25,7 +25,7 @@ def atacar(jogador, inimigos):
     for i in range(len(vivos)):
         print(f"{i + 1} - {vivos[i]['nome']} | Vida: {vivos[i]['vida']} | Ataque: {vivos[i]['ataque']}")
 
-# números aceites: "1", "2" até ao nº de inimigos vivos
+
     validos = [str(n) for n in range(1, len(vivos) + 1)]
     escolha = input("Escolha o inimigo: ")
 
