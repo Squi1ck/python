@@ -1,6 +1,7 @@
 from time import sleep
 from os import system
 from datetime import datetime
+import json
 
 ficheiro_log = "Ficha6-7/inventario.log"
 
@@ -9,12 +10,17 @@ def registrar_log(mensagem):
     data = data.now().strftime("%d-%m-%Y, %H:%M:%S")
     return f"{data} - {mensagem}\n"
 
+
 def meu_decorador(funcao):
     def wrapper(*args, **kwargs):
         funcao(*args, **kwargs)
         sleep(3)
         system("cls")
     return wrapper
+
+def guardar_json(inventario):
+    with open(ficheiro_json,"w") as f:
+        json.dump(ficheiro,f,indent=4)
 
 @meu_decorador
 def view(inventario):
