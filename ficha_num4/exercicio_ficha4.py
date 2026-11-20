@@ -1,27 +1,27 @@
+# Criar o dicionário aluno
 aluno = {
-            "nome": "Ana Silva",
-            "idade": 17,
-            "disciplinas": ["Matemática", "Física", "Informática"],
-            "notas": {
-                "Matemática": 18,
-                "Física": 16,
-                "Informática": 15
-            }
-        }
-aluno["notas"]["portugues"] = 16
-aluno["disciplinas"].append("Português")
+    "Nome": "Ana Silva",
+    "Idade": 17,
+    "Disciplinas": ["Matemática", "Física", "Informática"],
+    "Notas": {
+        "Matemática": 18,
+        "Física": 17,
+        "Informática": 19
+    }
+}
 
-aluno["idade"] = 18
+# 1. Adicionar uma nova disciplina e respetiva nota
+aluno["Disciplinas"].append("Português")
+aluno["Notas"]["Português"] = 16
 
-for disciplinas , notas in aluno["notas"].items():
-    print(disciplinas, notas)
+# 2. Modificar a idade para 18
+aluno["Idade"] = 18
 
-notas_aluno = []
-for nota in aluno["notas"].values():
-    notas_aluno.append(nota)
-    media = round(sum(notas_aluno)/len(notas_aluno),2)
+# 3. Imprimir todas as disciplinas e respetivas notas
+for disciplina, nota in aluno["Notas"].items():
+    print(disciplina, ":", nota)
 
-print (media)
+# 4. Calcular e imprimir a média das notas
+media = sum(aluno["Notas"].values()) / len(aluno["Notas"])
 
-
-resultado = contar_caracteres
+print("Média das notas:", media)

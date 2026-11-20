@@ -1,3 +1,22 @@
+from time import sleep
+from os import system
+from datetime import datetime
+
+ficheiro_log = "Ficha6-7/inventario.log"
+
+def registrar_log(mensagem):
+    data = datetime.now()
+    data = data.now().strftime("%d-%m-%Y, %H:%M:%S")
+    return f"{data} - {mensagem}\n"
+
+def meu_decorador(funcao):
+    def wrapper(*args, **kwargs):
+        funcao(*args, **kwargs)
+        sleep(3)
+        system("cls")
+    return wrapper
+
+@meu_decorador
 def view(inventario):
     if len(inventario) == 0:
         print("Não há livros no inventário atual!")
@@ -12,6 +31,7 @@ def novo_id(inventario):
         return 1
     return inventario[len(inventario)-1]["id"] + 1
 
+@meu_decorador
 def add(inventario: list):
     print("DADOS DO LIVRO\n")
     titulo = input("Título: ")
@@ -21,19 +41,28 @@ def add(inventario: list):
 
     livro = {"id": novo_id(inventario), "titulo": titulo, "autor": autor, "qtde": stock, "preco": preco}
     inventario.append(livro)
+    with open(ficheiro_log, "a") as f:
+        mensagem = f"Livro adicionado com sucesso: {titulo} ({livro['id']})"
+        f.write(registrar_log(mensagem))
 
+@meu_decorador
 def update_stock(inventario):
     found = False
     id_search = int(input("Digite o id do livro para atualização do stock: "))
     for livro in inventario:
         if livro["id"] == id_search:
+            stock_anterior = livro["qtde"]
             new_stock = int(input("Stock atual: "))
             livro["qtde"] = new_stock
             found = True
+            with open(ficheiro_log, "a") as f:
+                    mensagem = f"Stock atualizado: {livro['titulo']} ({livro['id']}); Stock anterior: {stock_anterior}; Stock novo: {new_stock}"
+                    f.write(registrar_log(mensagem))
             break
     if not found:
         print("Não existe nenhum livro em stock com o id indicado")
 
+@meu_decorador
 def remove(inventario: list):
     found = False
     id_search = int(input("Digite o id do livro para remoção do inventário: "))
@@ -41,10 +70,14 @@ def remove(inventario: list):
         if livro["id"] == id_search:
             inventario.remove(livro)
             found = True
+            with open(ficheiro_log, "a") as f:
+                mensagem = f"Livro Removido: {livro['titulo']} ({livro['id']});"
+                f.write(registrar_log(mensagem))
             break
     if not found:
         print("Não existe nenhum livro em stock com o id indicado")
 
+@meu_decorador
 def search_by_author_or_title(inventario: list):
     found = False
     search = input("Digite o nome do livro ou do autor: ")
@@ -57,6 +90,7 @@ def search_by_author_or_title(inventario: list):
     if not found:
         print("Não existe nenhum livro em stock com o id indicado") 
 
+@meu_decorador
 def report(inventario):
     valor_inventario = 0
     for livro in inventario:
