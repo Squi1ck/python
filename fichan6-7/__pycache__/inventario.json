@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "titulo": "aaa",
+        "autor": "bbb",
+        "qtde": 666,
+        "preco": 888.0
+    },
+    {
+        "id": 2,
+        "titulo": "ttt",
+        "autor": "yyy",
+        "qtde": 777,
+        "preco": 555.0
+    }
+]

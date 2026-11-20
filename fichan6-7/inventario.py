@@ -19,6 +19,10 @@ while True:
         case 6:
             report(livros)
         case 7:
+            visualizar_log()
+        case 8:
+            livros = carregar_json()
+        case 9:
             break
 
 print("Aplicação finalizada!")
