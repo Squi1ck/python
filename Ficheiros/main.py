@@ -1,3 +1,5 @@
+import nomes.json
+
 f = open("dados.txt","r")
 lista = f.readlines()
 
