@@ -1,0 +1,5 @@
+O Alquimista;Paulo Coelho;1988;1
+Os Maias;Eça de Queirós;1888;1
+Mensagem;Fernando Pessoa;1934;0
+Memorial do Convento;José Saramago;1982;1
+Ensaio sobre a Cegueira;José Saramago;1995;0
